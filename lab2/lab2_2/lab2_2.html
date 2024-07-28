@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>แบบฟอร์มจองทัวร์</title>
+    <style>
+        .logout-container {
+            display: none;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h3>แบบฟอร์มจองทัวร์</h3>
+    <form  id="loginForm" onsubmit="return validateForm()">
+        <!-- ข้อมูลทั่วไป -->
+        <fieldset>
+            <legend>ข้อมูลทั่วไป</legend>
+            <label for="name">ชื่อ-สกุล:</label><br>
+            <input type="text" id="name" name="name" placeholder="กรอกชื่อ-สกุล" required> <lable>*</lable><br>
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" name="email" required> <lable>*</lable><br>
+            <label for="phone">โทรศัพท์:</label><br>
+            <input type="tel" id="phone" name="phone" pattern="\+66\d{9}" placeholder="+66xxxxxxxxx" value="+66" required> <lable>*</lable><br>
+            <label for="address">ที่อยู่:</label><br>
+            <textarea id="address" name="address" ></textarea><br>
+            <label for="zipcode">รหัสไปรษณีย์:</label><br>
+            <input type="text" id="zipcode" name="zipcode" pattern="\d{5}" size="5" ><br>
+            <label for="photo">รูปถ่าย:</label><br>
+            <input type="file" id="photo" name="photo" ><br>
+        </fieldset>
+
+        <!-- ข้อมูลเข้าสู่ระบบ -->
+        <fieldset>
+            <legend>ข้อมูลเข้าสู่ระบบ</legend>
+            <label for="username">Username:</label><br>
+            <input type="text" id="username" name="username" pattern=".{8,}" ><br>
+            <lable><i>ประกอบด้วยตัวเลข ตัวอักษร หรือ _ ตั้งแต่ 8 ตัวขึ้นไป</i></lable><br><br>
+            <label for="password">Password:</label><br>
+            <input type="password" id="password" name="password" pattern=".{8,}" ><br>
+            <lable><i>ประกอบด้วยตัวอัขระอะไรก็ได้ 8 ตัวขึ้นไป</i></lable>
+
+        </fieldset>
+
+        <!-- ข้อมูลทัวร์ที่ต้องการ -->
+        <fieldset>
+            <legend>ข้อมูลทัวร์ที่ต้องการ</legend>
+            <label for="package">แพคเกจทัวร์:</label><br>
+            <select id="package" name="package" >
+                <option value="">--select--</option>
+                <option value="1">เกาหลี</option>
+                <option value="2">ญี่ปุ่น</option>
+                <option value="3">สหรัฐอเมริกา</option>
+                <option value="4">อิตาลี</option>
+                <option value="5">เนเธอร์แลนด์</option>
+            </select><br>
+            <label for="travel-date">วันที่เดินทาง:</label><br>
+            <input type="date" id="travel-date" name="travel-date" ><br>
+            <label for="number">จำนวนเดินทาง:</label><br>
+            <input type="number" id="number" name="number" min="1" max="10" ><br>
+            <label>เป้าหมายการเดินทางแบบใด?</label><br>
+            <input type="checkbox" id="goal1" name="goal" value="ช็อปปิ้ง">
+            <label for="goal1">ช็อปปิ้ง</label><br>
+            <input type="checkbox" id="goal2" name="goal" value="ธรรมชาติ">
+            <label for="goal2">ธรรมชาติ</label><br>
+            <input type="checkbox" id="goal3" name="goal" value="ทะเล">
+            <label for="goal3">ทะเล</label><br>
+        </fieldset>
+
+        <!-- ยอมรับเงื่อนไขและข้อตกลง -->
+        <br>
+            <legend>ยอมรับเงื่อนไขและข้อตกลง
+            <input type="radio" id="agree" name="terms" value="agree" checked>
+            <label for="agree">I agree</label>
+            <input type="radio" id="disagree" name="terms" value="disagree">
+            <label for="disagree">I disagree</label>  
+            <button type="submit" class="button"> จอง</button>
+            </legend>
+    </form>
+    <div class="logout-container" id="logoutContainer">
+        <h2>...การจองทัวร์ของคุณสำเร็จ...</h2>
+    </div>
+
+    <script>
+        function validateForm() {
+            var name = document.getElementById('name').value;
+            var email = document.getElementById('email').value;
+            var phone = document.getElementById('phone').value;
+            
+            if (!name) {
+                alert('กรุณากรอกชื่อ-สกุล');
+                return false;
+            }
+
+            if (!email) {
+                alert('กรุณากรอกอีเมล');
+                return false;
+            }
+
+            if (!phone) {
+                alert('กรุณากรอกเบอร์โทรศัพท์');
+                return false;
+            }
+
+            // Hide the form and show the success message
+            document.getElementById('loginForm').style.display = 'none';
+            document.getElementById('logoutContainer').style.display = 'block';
+
+            return false; // Prevent actual form submission
+        }
+
+        function logout() {
+            document.getElementById('loginForm').style.display = 'block';
+            document.getElementById('logoutContainer').style.display = 'none';
+            document.getElementById('loginForm').reset();
+        }
+    </script>
+
+
+<b></b>
+</body>
+</html>

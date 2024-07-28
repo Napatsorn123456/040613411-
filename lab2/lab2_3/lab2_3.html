@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>เข้าสู่ระบบ</title>
+    <style>
+
+        table {
+            border: 1px solid black;
+        }
+        th, td {
+           
+            text-align:left;
+            border: 1px solid black;
+        }
+        .button {
+            color:black;
+            padding: 10px 20px;
+            cursor:;
+            border: 1px solid black;
+        }
+        .button img {
+            width: 30px;
+            height: 30px;
+            vertical-align: middle;
+            margin-right: 5px;
+        }
+        .button-container {
+            margin-top: 20px;
+        }
+        .logout-container {
+            display: none;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h2>เข้าสู่ระบบ</h2>
+
+    <form id="loginForm" onsubmit="return validateForm()">
+        <table>
+            <tr>
+                <td style="width:30%">
+                    <label for="username">Username:</label>
+                </td>
+                <th>
+                    <input type="text" id="username" name="username" required autofocus>
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    <label for="password">Password:</label>
+                </td>
+                <th>
+                    <input type="password" id="password" name="password" required>
+                </th>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <label for="code">กรุณาพิมพ์เลขตัวเลขที่ปรากฏ: 1559</label><br>
+                    <input type="text" id="code" name="code" required pattern="1559">
+                </td>
+            </tr>
+        </table>
+        <div class="button-container">
+            <button type="submit" class="button">
+                <img src="/lab2/lab2_3/image/login.png" alt="Login Icon"><br> Login
+            </button>
+        </div>
+    </form>
+    <div class="logout-container" id="logoutContainer">
+        <h2>...เข้าสู่ระบบแล้ว...</h2>
+        <button class="button" onclick="logout()">Logout</button>
+    </div>
+
+    <script>
+        function validateForm() {
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+            var code = document.getElementById('code').value;
+
+            if (username && password && code === '1559') {
+                document.getElementById('loginForm').style.display = 'none';
+                document.getElementById('logoutContainer').style.display = 'block';
+                return false; // Prevent form submission
+            }
+            return false; // Prevent form submission if validation fails
+        }
+
+        function logout() {
+            document.getElementById('loginForm').style.display = 'block';
+            document.getElementById('logoutContainer').style.display = 'none';
+            document.getElementById('loginForm').reset();
+        }
+    </script>
+
+
+
+<b></b>
+</body>
+</html>
