@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+</head>
+<body>
+    <form action="form-echo.php" method="get">
+    USERNAME : 
+    <input
+        type="text"
+        name="username"
+        placeholder="Username">  
+    
+    <p>1. กรอกชื่อด้วยภาษาอังกฤษ อักษรตัวใหญ่เท่านั้น:</p>
+    <input
+        type="text"
+        name="name"
+        pattern="[A-Z\s]+"
+        placeholder="Name in English (Uppercase only)"
+        required>
+            
+    <p>2. "รหัสนักศึกษา" มี – คั่นตามรูปแบบนี้ เช่น 61-040626-1234-5:</p>
+    <input
+        type="text"
+        name="student_id"
+        pattern="\d{2}-\d{6}-\d{4}-\d"
+        placeholder="61-040626-1234-5"
+        required>
+    
+    <p>3. "บ้านเลขที่" เช่น 235/4 , 69:</p>
+    <input
+        type="text"
+        name="house_no"
+        pattern="\d{1,3}/\d{1,3}|\d{1,3}"
+        placeholder="235/4 , 69"
+        required>
+    
+    <p>4. "รหัสสินค้า 3 ตัวแรกเป็นอักษรตัวใหญ่ตามด้วยตัวเลขอีก 2 ตัว" เช่น AAA89:</p>
+    <input
+        type="text"
+        name="product_code"
+        pattern="[A-Z]{3}\d{2}"
+        placeholder="AAA89"
+        required>
+    
+    <p>5. กรอกชื่อด้วยภาษาไทยเท่านั้น:</p>
+    <input
+        type="text"
+        name="thai_name"
+        pattern="[\u0E00-\u0E7F\s]+"
+        placeholder="ชื่อภาษาไทย"
+        required>
+        
+    <p><label>สาขาวิชา:</label>
+ 
+    <select name="dept">
+        <option value="">--Please choose an option--</option>
+        <option value="CS">CS</option>
+        <option value="IC">IC</option>
+        <option value="MA">MA</option>
+        <option value="IMI">IMI</option>
+        <option value="AS">AS</option>
+        <option value="AFET">AFET</option>
+    </select>
+    <p><input type="submit" value="Submit">
+    </form>
+</body>
+</html>
+
