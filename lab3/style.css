@@ -1,0 +1,31 @@
+/*  lab3-3 */
+#year {
+    font-weight: bold;
+    color: red;
+    font-style: italic;
+}
+.yellow-bg {
+    background-color: yellow;
+}
+.gray-bg {
+    background-color: gray;
+}
+
+/*  lab3-4 */
+table {
+    border: 1px solid black;
+    width: 100px;
+    margin: 20px;
+}
+
+td {
+    border: 1px solid black;
+    padding: 10px;
+    cursor: pointer;
+}
+
+tr:hover {
+    background-color: rgb(224, 132, 202);
+}
+
+
