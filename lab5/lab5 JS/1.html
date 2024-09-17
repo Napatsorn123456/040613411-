@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        let student = [
+            {
+                fullname: 'นายตั้งใจ เรียนมาก',
+                age: 18,
+                year: 1,
+                gpa: 3.40,
+                help: true
+            },
+            {
+                fullname: 'นายสง่างาน ตลอดมา',
+                age: 19,
+                year: 2,
+                gpa: 3.00,
+                help: false
+            },
+            {
+                fullname: 'นางสาวใส่ใจ ดงีาม',
+                age: 20,
+                year: 3,
+                gpa: 2.90,
+                help: true
+            }
+        ];
+
+        function checkScholarship() {
+            let eligibleStudents = []; 
+            let resultDiv = document.getElementById('result'); 
+
+        
+            student.forEach(function(stu) {
+               
+                if (stu.gpa >= 3.20) {
+                    eligibleStudents.push(stu.fullname + ' (ตามเงื่อนไขที่ I)');
+                }
+
+                if (stu.year >= 2 && stu.help === true && stu.gpa >= 2.75) {
+                    eligibleStudents.push(stu.fullname + ' (ตามเงื่อนไขที่ II)');
+                }
+            });
+
+       
+            resultDiv.innerHTML = '';
+
+
+            if (eligibleStudents.length > 0) {
+                eligibleStudents.forEach(function(student) {
+                    resultDiv.innerHTML += '<p>' + student + '</p>';
+                });
+            } else {
+                resultDiv.innerHTML = '<p>ไม่มีนักเรียนที่มีสิทธิ์ได้รับทุนการศึกษา</p>';
+            }
+        }
+    </script>
+</head>
+<body>
+    <p>รายชื่อนักเรียนที่มีสิทธิ์ได้รับทุนการศึกษา:</p>
+    <button onclick="checkScholarship()">ตรวจสอบสิทธิ์รับทุนการศึกษา</button>
+    <div id="result"></div> 
+</body>
+</html>

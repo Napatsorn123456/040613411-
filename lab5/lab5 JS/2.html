@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+       let students = [
+
+            {
+                fullname: 'นายตั้งใจ เรียนมาก',
+                birthYear: 2546,
+                year: 1,
+                gpa: 3.40,
+                help: true
+            },
+            {
+                fullname: 'นายสง่างาน ตลอดมา',
+                birthYear: 2545,
+                year: 2,
+                gpa: 3.00,
+                help: false
+            },
+            {
+                fullname: 'นางสาวใส่ใจ ดีงาม',
+                birthYear: 2544,
+                year: 3,
+                gpa: 2.90,
+                help: true
+            },
+            {
+                fullname: 'นายขยัน หมั่นศึกษา',
+                birthYear: 2543,
+                year: 4,
+                gpa: 3.50,
+                help: false
+            },
+            {
+                fullname: 'นางสาวช่วยงาน สม่ำเสมอ',
+                birthYear: 2545,
+                year: 2,
+                gpa: 2.80,
+                help: true
+            }
+        ];
+
+        function checkScholarship() {
+            let receivedScholarship = {
+                1: [],
+                2: [],
+                3: [],
+                4: []
+            };
+
+            students.forEach(function(student) {
+                let reason = "";
+                let scholarshipStatus = "";
+
+                // I: ไม่จำกัดชั้นปี แต่เกรดเฉลี่ยสะสม 3.20 ขึ้นไป
+                if (student.gpa >= 3.20) {
+                    scholarshipStatus = "ได้รับทุนการศึกษา";
+                    reason = "เนื่องจากเกรดเฉลี่ยถึงเกณฑ์";
+                }
+
+                // II: ชั้นปีที่ 2 เป็นต้นไป ที่ช่วยงานภาควิชา และได้เกรดเฉลี่ยสะสม 2.75 ขึ้นไป
+                if (student.year >= 2 && student.help === true && student.gpa >= 2.75) {
+                    scholarshipStatus = "ได้รับทุนการศึกษา";
+                    reason += reason ? " และยังช่วยงานภาควิชาด้วย" : "เนื่องจากช่วยงานภาควิชาด้วย";
+                }
+
+                // ไม่ผ่านเงื่อนไขใดเลย
+                if (!scholarshipStatus) {
+                    scholarshipStatus = "ไม่ได้รับทุนการศึกษา";
+                    reason = `เนื่องจาก${student.gpa < 2.75 ? 'เกรดเฉลี่ยไม่ถึงเกณฑ์' : ''}`;
+                    if (!student.help && student.year >= 2) {
+                        reason += reason ? " และยังไม่ได้ช่วยงานภาควิชา" : "ไม่ได้ช่วยงานภาควิชา";
+                    }
+                }
+
+                console.log(`${student.fullname} เกิดเมื่อปี ${student.birthYear} ${scholarshipStatus} ${reason}`);
+
+                if (scholarshipStatus === "ได้รับทุนการศึกษา") {
+                    receivedScholarship[student.year].push(`${student.fullname} ${reason}`);
+                }
+            });
+
+            console.log("\nสรุปรายชื่อนักศึกษาที่ได้รับทุนตามชั้นปี");
+            for (let year in receivedScholarship) {
+                console.log(`\nชั้นปีที่ ${year}`);
+                if (receivedScholarship[year].length > 0) {
+                    receivedScholarship[year].forEach(function(student) {
+                        console.log(student);
+                    });
+                } else {
+                    console.log("ไม่มี");
+                }
+            }
+        }
+
+        checkScholarship();
+    </script>
+</head>
+<body>
+    <p>รายชื่อนักเรียนที่มีสิทธิ์ได้รับทุนการศึกษา:</p>
+    <p>ดูผลลัพธ์ใน console</p>
+</body>
+</html>

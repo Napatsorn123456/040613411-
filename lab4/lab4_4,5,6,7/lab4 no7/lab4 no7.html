@@ -1,0 +1,83 @@
+<html lang="en">
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+	<meta charset="UTF-8">
+	<title>Mobile First Page with Semantic Layout and Flexbox</title>
+	<style>
+	
+		.container {
+			display: flex;
+			flex-direction: column; 
+			width: 100%;
+			box-sizing: border-box;
+		}
+
+
+		header, nav, main, aside {
+			padding: 10px;
+			width: 100%; 
+		}
+
+		header {
+			background-color: black;
+			color: white;
+			text-align: center;
+		}
+
+		nav {
+			background-color: gray;
+			color: white;
+			text-align: center;
+		}
+
+		main {
+			background-color: gainsboro;
+		}
+
+		aside {
+			background-color: cornflowerblue;
+			color: white;
+		}
+
+		@media (min-width: 480px) {
+			.container {
+				flex-direction: row-reverse ; 
+			}
+
+			nav {
+				width: 30%; 
+			}
+
+			main {
+				width: 60%; 
+			}
+
+			aside {
+				width: 10%; 
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+
+		<header>
+			<h1>Welcome to My Website</h1>
+		</header>
+	
+		<nav>
+			<p>Menu1 | Menu2 | Menu3</p>
+		</nav>
+
+		<main>
+			<p>In publishing, art, and communication, content is information directed toward an audience. Content is "something that is to be expressed through some medium, as speech, writing, or any of various arts".</p>
+		</main>
+
+		<aside>
+			<p>Advertising: Learn more about our services</p>
+			<p>Advertising: Special discounts available now!</p>
+			<p>Advertising: Contact us for more info</p>
+		</aside>
+	</div>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<html>
+<head>
+<script>
+
+function changeTextColor(input) {
+    if (input.value !== "") {
+        input.style.color = "green"; 
+    }
+}
+</script>
+</head>
+<body>
+<h1>Register</h1>
+<form > 
+    Username: <input type="text" id="username" onblur="changeTextColor(this)" required><br>
+    Age: <input type="number" id="age" onblur="changeTextColor(this)" required><br> 
+</form>
+</body>
+</html>
